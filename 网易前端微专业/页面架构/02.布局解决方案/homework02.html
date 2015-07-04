@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--实现一个幻灯布局-->
+<!--一个幻灯片效果如图：-->
+<!--已知结构如下：-->
+<!--<div class="slide">-->
+    <!--&lt;!&ndash; 图片省略 &ndash;&gt;-->
+    <!--&lt;!&ndash; 以下是指示器 &ndash;&gt;-->
+    <!--<div class="pointer"><i></i><i></i><i></i></div>-->
+<!--</div>-->
+<!--要求如下：幻灯（slide）宽高未知，指示器（pointer）在底部且水平居中，距离底部10px，指示器中的圆直径为10px，个数未知，背景为黑色，间距为5px，请完成CSS。-->
+    <style>
+        .slide{
+            background-color:rgb(189,215,238);
+            position: relative;
+            width: 300px;
+            height: 500px;
+        }
+        .pointer{
+            position:absolute;
+            bottom:10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .slide .pointer i{
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            display:inline-block;
+            background-color: black;
+            vertical-align: bottom;
+        }
+    </style>
+    <div class="slide">
+    <!-- 图片省略 -->
+    <!-- 以下是指示器 -->
+        <div class="pointer">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+        </div>
+    </div>
+</body>
+</html>
