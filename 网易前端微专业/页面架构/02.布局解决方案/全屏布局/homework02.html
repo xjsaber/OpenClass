@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!--实现一个弹窗-->
+    <!--已知HTML结构和效果图如下：-->
+
+    <!--<div class="a">-->
+        <!--<div class="b">Hello World</div>-->
+    <!--</div>-->
+    <!--假设以上父元素称为A，子元素称为B-->
+    <!--请写出CSS以实现以下弹窗需求：弹窗（B）固定在浏览器窗口中间，弹窗背景色为白色，
+    弹窗宽高由其内容决定，弹窗四周为黑色半透明（0.5透明度）遮罩-->
+</head>
+<body>
+<style>
+    .a{
+        background-color: black;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        z-index: 1;
+        opacity: 0.5;
+        text-align: center;
+    }
+    .b{
+        background-color: white;
+        position: absolute;
+        z-index: 2;
+        left: 50%;
+        top:50%;
+        transform: translate(-50%);
+    }
+</style>
+<div class="a">
+    <div class="b">Hello World</div>
+</div>
+</body>
+</html>

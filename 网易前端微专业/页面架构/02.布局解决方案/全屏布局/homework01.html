@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!--课后调研grid方案，来实现内容自适应的全屏布局-->
+    <!--课程中提到了grid方案，但没有深入讲解。-->
+    <!--本次讨论，大家可以自己调研下grid，用grid来实现内容自适应的全屏布局。-->
+    <!--（可以了解下w3c上关于grid的草案）-->
+    <style>
+        .grid {
+            display: -ms-grid;
+            grid-definition-columns: 150px 1fr; /* 两列*/
+            grid-definition-rows: 50px 1fr 50px /* 三行  */
+        }
+        .head{
+            -ms-grid-column-span: 2;
+            -ms-grid-row: 1 ;
+            background-color: red;
+        }
+        .left{
+            -ms-grid-column: 1;
+            -ms-grid-row: 2;
+            background-color:green;
+        }
+        .right{
+            -ms-grid-column: 2;
+            -ms-grid-row: 2;
+            background-color:yellow;
+        }
+        .bottom{
+            -ms-grid-column-span: 2;
+            -ms-grid-row:3;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+<div class="grid">
+    <div class="head">Head</div>
+    <div class="left">Left</div>
+    <div class="right">Right</div>
+    <div class="bottom">Bottom</div>
+</div>
+</body>
+</html>

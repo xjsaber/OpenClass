@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!--实现一个自适应布局-->
+    <!--按要求完成能兼容所有浏览器的HTML和CSS：一个不定宽度的容器被分为左中右三列，-->
+    <!--左右两列定宽100px，中间列自适应剩余宽度，且三列之间间距为10px，效果如下：-->
+    <!--使用float-->
+    <style>
+        .box{
+            overflow: hidden;
+        }
+        .left,.right{
+            padding-bottom: 9999px;
+            margin-bottom: -9999px;
+        }
+        .left
+        {
+            float: left;
+            background-color: red;
+            width: 100px;
+        }
+        .center
+        {
+            float: left;
+            overflow: hidden;
+            margin: 0 10px;
+            background-color: mediumvioletred;
+        }
+        .right
+        {
+            overflow: hidden;
+            background-color: dodgerblue;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="left">左侧定宽</div>
+    <div class="center">中间自适应</div>
+    <div class="right">右侧定宽</div>
+</div>
+</body>
+</html>
