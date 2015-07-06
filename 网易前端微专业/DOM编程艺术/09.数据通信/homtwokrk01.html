@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--Ajax请求GET方法的封装-->
+<!--方法-->
+<!--get(url, options, callback)-->
+<!--参数-->
+<!--url    {String}    请求资源的url-->
+<!--options    {Object}    请求的查询参数-->
+<!--callback    {Function}    请求的回调函数，接收XMLHttpRequest对象的responseText属性作为参数-->
+<!--返回-->
+<!--void-->
+<!--举例-->
+<!--get(‘/information’, {name: ‘netease’, age: 18}, function (data) {-->
+<!--console.log(data);-->
+<!--});-->
+<!--描述-->
+<!--方法get(url, options, callback) 是对Ajax请求GET方法的封装。请写出get方法的实现代码。-->
+    <script type="text/javascript">
+        function get(url, options, callback){
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == 4){
+                    if((xhr.status == 200 && xhr.status < 300) || xhr.status == 304){
+                        callback(xhr.responseText);
+                    }
+                    else{
+                        console.log("Request was unsuccessful: " + xhr.status);
+                    }
+                }
+            }
+            var url = url + "?" + serialize(options);
+            xhr.open("get", url, true);
+            xhr.send(null);
+        }
+        function serialize(data){
+            if(!data) return "";
+            var pairs = [];
+            for (var name in data){
+                if(!data.hasOwnProperty((name))) continue;
+                if(typeof data[name] === 'function') continue;
+                var value = data[name].toString();
+                name = encodeURIComponent(name);
+                value = encodeURIComponent(value);
+                pairs.push(name + "=" + value);
+            }
+            return pairs.join('&');
+        }
+    </script>
+</body>
+</html>
