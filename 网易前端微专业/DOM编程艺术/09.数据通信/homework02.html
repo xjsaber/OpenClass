@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--Ajax请求POST方法的封装-->
+<!--post函数是对Ajax的POST请求的封装，语法如下：-->
+<!--post(url, options, callback)-->
+<!--没有返回值，参数说明如下：-->
+<!--url：请求资源的url，String类型-->
+<!--options：请求的查询参数，Object类型-->
+<!--callback：回调函数，接收XMLHttpRequest对象的responseText属性作为参数，Function类型-->
+<!--使用示例如下：-->
+<!--post('/addUser', {name: 'jerry', age: 1}, function(data) {-->
+<!--// 处理返回数据-->
+<!--});-->
+<!--请写出post函数的实现代码，要求浏览器兼容。-->
+<script type="text/javascript">
+    function post(url, options, callback){
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4){
+                if((xhr.status == 200 && xhr.status < 300) || xhr.status == 304){
+                    callback(xhr.responseText);
+                }
+                else{
+                    console.log("Request was unsuccessful: " + xhr.status);
+                }
+            }
+        }
+        xhr.open("post", url, true);
+        xhr.send(serialize(options));
+
+        function serialize(data){
+            if(!data) return "";
+            var pairs = [];
+            for (var name in data){
+                if(!data.hasOwnProperty((name))) continue;
+                if(typeof data[name] === 'function') continue;
+                var value = data[name].toString();
+                name = encodeURIComponent(name);
+                value = encodeURIComponent(value);
+                pairs.push(name + "=" + value);
+            }
+            return pairs.join('&');
+        }
+    }
+</script>
+</body>
+</html>
