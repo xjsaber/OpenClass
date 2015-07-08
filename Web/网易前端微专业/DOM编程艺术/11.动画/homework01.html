@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!--函数fadeout(element)实现了元素的淡出效果（即透明度从1变到0），-->
+    <!--动画时间为1秒钟。用定时器setInterval实现动画，写出函数fadeout的实现代码：-->
+
+</head>
+<body>
+<style>
+    #myCanvas{
+        background-color:black;
+    }
+</style>
+<canvas id="myCanvas" width="300px" height="300px"></canvas>
+<script type="text/javascript">
+    var myCanvas = document.getElementById("myCanvas");
+    fadeout(myCanvas);
+    function fadeout(element){
+        if (element) {
+            var opacity = element.style.opacity;
+            var time = 1000;
+            var speed = 50;
+            if (!opacity) opacity = 1;
+            var step = function () {
+                if (time  > 0) {
+                    opacity -= 1 / (1000 / speed);
+                    time -= speed;
+                }
+                else {
+                    clearInterval(intervalID);
+                }
+                setOpacity(element, opacity);
+            }
+            var intervalID = setInterval(step, speed);
+        }
+    }
+    function setOpacity(element, opacity) {
+        if(typeof element.style.opacity == "string"){
+            element.style.opacity = opacity ;
+        }
+        else{
+            element.style.filter = "alpha(opacity=" + opacity + ")";
+        }
+    }
+</script>
+</body>
+</html>
